@@ -136,10 +136,10 @@ std::vector<Image> Image::bitSlice(){
 		for(int y = 0; y < height(); y++ )
 			for(int x = 0; x < width(); x++ )
 			{
-				uint s = 0;
-				s = data.at<char>(y,x) & (1 << i);
+				uchar s = 0;
+				s = data.at<uchar>(y,x) & (1 << i);
 				if(s != 0) s = 255;
-				next.data.at<char>(y,x) = s;
+				next.data.at<uchar>(y,x) = s;
 			}
 		slices.push_back(next);
 	}
