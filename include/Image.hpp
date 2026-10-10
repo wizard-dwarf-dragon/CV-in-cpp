@@ -20,6 +20,7 @@ public:
     int height() const;
     void toNegative();
     Image rotate(float rads);
+    std::vector<Image> bitSlice();
     cv::Mat genShiftToCenter(int height, int width);
     cv::Mat genRotationMat(float rads);
     cv::Mat genShiftFromCenter(int height, int width);

@@ -3,6 +3,7 @@
 #define CVDOUBLE CV_64FC1
 #include <cmath>
 #include <algorithm>
+#include <vector>
 Image::Image()
 {
 }
@@ -127,4 +128,21 @@ cv::Mat& Image::mat()
 const cv::Mat& Image::mat() const
 {
     return data;
+}
+std::vector<Image> Image::bitSlice(){
+	std::vector<Image> slices;
+	for(int i = 0; i < 8; i++){
+		Image next = Image(height(), width());
+		for(int y = 0; y < height(); y++ )
+			for(int x = 0; x < width(); x++ )
+			{
+				uint s = 0;
+				s = data.at<char>(y,x) & (1 << i);
+				if(s != 0) s = 255;
+				next.data.at<char>(y,x) = s;
+			}
+		slices.push_back(next);
+	}
+	return slices;
+
 }
