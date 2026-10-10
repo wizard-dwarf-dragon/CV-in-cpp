@@ -21,6 +21,7 @@ public:
     void toNegative();
     Image rotate(float rads);
     std::vector<Image> bitSlice();
+    Image gammaTransform(double c = 1, double g= 1, double b=0);
     cv::Mat genShiftToCenter(int height, int width);
     cv::Mat genRotationMat(float rads);
     cv::Mat genShiftFromCenter(int height, int width);

@@ -20,8 +20,10 @@ int main(int args, char* argc[])
     if(args > 0){
     image.rotate(PI/std::stoi(argc[1])).display("Hi again.");
     }
-    */
+    
     for(auto ele: image.bitSlice())
 	    ele.display();
+	    */
+    image.gammaTransform(1.0, 1.25).display();
     return 0;
 }

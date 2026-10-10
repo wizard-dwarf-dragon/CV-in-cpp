@@ -146,3 +146,16 @@ std::vector<Image> Image::bitSlice(){
 	return slices;
 
 }
+Image Image::gammaTransform(double c, double gamma, double b){
+	Image image = Image(height(), width());
+	for(int y = 0; y < height(); y++ )
+                        for(int x = 0; x < width(); x++ )
+                        {
+                                double s = 0;
+                                s = c* pow(data.at<uchar>(y,x),(gamma)) + b;
+				if(s > 255) s= 255;
+                                image.data.at<uchar>(y,x) = (uchar)round(s);
+                        }
+	return image;
+
+}
